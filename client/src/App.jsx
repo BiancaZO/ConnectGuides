@@ -2,11 +2,12 @@ import './App.css'
 import IndexPage from './pages/IndexPage'
 import LoginPage from './pages/LoginPage'
 import Layout from "./Layout";
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import RegisterPage from './pages/RegisterPage';
 
 function App() {
-  return (
+  return (   
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<IndexPage />} />
