@@ -6,8 +6,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import RegisterPage from './pages/RegisterPage';
 import axios from 'axios';
 
-// Sets the default server URL
-axios.defaults.baseURL = "http://localhost:4000";
+// Sets axios default values
+axios.defaults.baseURL = "http://localhost:4000"; // or 127.0.0.1:4000 if Network -> headers -> cookies displays an exclamation mark
+axios.defaults.withCredentials = true;
 
 function App() {
   return (

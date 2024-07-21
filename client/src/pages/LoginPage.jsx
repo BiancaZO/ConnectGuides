@@ -6,7 +6,7 @@ export default function LoginPage() {
   // Set state for the inputs
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
+
   async function handleLoginSubmit(event) {
     event.preventDefault();
     try {
