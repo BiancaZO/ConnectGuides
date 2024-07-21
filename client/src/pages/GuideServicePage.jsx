@@ -1,10 +1,11 @@
 import { useParams } from "react-router-dom";
+import Services from "../Services";
+import { useState } from "react";
 
 export default function GuiaServicePage(){
     const {action} = useParams();
-
-
-
+    const (title,setTitle) = useState{''};
+    const (city,setCity) = useState('');
     const[addedPhotos, setAddedPhotos] = useState([]);
     const[photoLink, setPhotoLink] = useState('');
     const[description, setDescription] = useState('');
@@ -15,7 +16,6 @@ export default function GuiaServicePage(){
     function inputHeader(text){
         return(
             <h2 className="text-2xl mt-4">{text}</h2>
-
         );
     }
     function inputDescription(text){
@@ -55,7 +55,6 @@ export default function GuiaServicePage(){
             });
         })
     }
-
     return(
         <div>
             {action !== 'new' && (
@@ -101,13 +100,14 @@ export default function GuiaServicePage(){
                             </label>
                         </div>
 
+
                         {preInput('Description','Description of your services') }
                         <textarea value={description} onChange={ev => setDescription(ev.target.description)} /> {/*ele colocou um textarea no index.css mas ja existe outro criado*/}
                         {preInput('Services','Select all services') }
                         <div>
                              <Services selected={services} onChange={setSevices}/>   
                         </div>
-                                           
+
 
                     </form>
                 </div>
