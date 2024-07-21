@@ -1,11 +1,15 @@
-import {Link} from "react-router-dom";
+
+import React from 'react';
+
+
+//import {Link} from "react-router-dom";
+
 
 export default function IndexPage() {
-    return (
-      <div>
-        <header>
-          <h1>Connect Guides</h1>
-        </header>
-      </div>
-    )
-  }
+    return (     
+        <div>
+            index page here
+        </div>   
+        
+     );
+   }
