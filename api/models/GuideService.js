@@ -11,6 +11,7 @@ const guideServiceSchema = new mongoose.Schema({
   phone: Number,
   email: String,
   price: Number,
+  services: String,
 });
 
 const GuideServiceModel = mongoose.model('GuideService', guideServiceSchema);

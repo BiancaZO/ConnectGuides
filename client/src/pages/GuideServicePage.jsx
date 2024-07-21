@@ -1,7 +1,12 @@
 import { useParams } from "react-router-dom";
+import Services from "../Services";
+import { useState } from "react";
 
 export default function GuiaServicePage(){
     const {action} = useParams();
+    const (title,setTitle) = useState{''};
+    const (city,setCity) = useState('');
+
     return(
         <div>
             {action !== 'new' && (
@@ -39,8 +44,12 @@ export default function GuiaServicePage(){
                             </button>
                         </div>
                         <h2 className="text-2xl mt-4">Description</h2>
-                        <p className="text-gray-500 text-sm">DEscription of the services</p>
+                        <p className="text-gray-500 text-sm">Description of the services</p>
                         <textarea /> {/*ele colocou um textarea no index.css mas ja existe outro criado*/}
+                        <h2 className="text-2xl mt-4">Services</h2>
+                        <p  className="text-gray-500 text-sm">Select all services</p>
+                        <Services selected={services} onChange={setServices()}/>
+
                     </form>
                 </div>
             )}
