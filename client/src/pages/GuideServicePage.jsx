@@ -1,11 +1,13 @@
-import { useParams } from "react-router-dom";
+import { useParams , Link } from "react-router-dom";
 import Services from "../Services";
 import { useState } from "react";
+import axios from "axios";
 
-export default function GuiaServicePage(){
+export default function GuideServicePage(){
+   
     const {action} = useParams();
-    const (title,setTitle) = useState{''};
-    const (city,setCity) = useState('');
+    const[title,setTitle] = useState('');
+    const[city,setCity] = useState('');
     const[addedPhotos, setAddedPhotos] = useState([]);
     const[photoLink, setPhotoLink] = useState('');
     const[description, setDescription] = useState('');
@@ -40,10 +42,11 @@ export default function GuiaServicePage(){
         });
         setPhotoLink('');
     }
+
     function uploadPhoto(ev) {
         const files = ev.target.files;
         const data = new FormData();
-        for (let i = 0; i < files.lenght; i++){
+        for (let i = 0; i < files.length; i++){
             data.append('photos' , files[i]);
         }      
         axios.post('/upload' , data , {
@@ -53,19 +56,24 @@ export default function GuiaServicePage(){
             setAddedPhotos(prev =>{
                 return [...prev, ...filenames]
             });
-        })
+
+        }).catch(error => {
+            console.error("Error uploading photos:", error);
+            alert("Error uploading photos. Please try again.");
+        });
     }
+
     return(
         <div>
             {action !== 'new' && (
             <div className="text-center">
-                <link className="inline-flex gap-1 bg-primary text white py-2 px-4 rounded-full" to={'/account/GuideServices/new'}>
+                <Link className="inline-flex gap-1 bg-primary text white py-2 px-4 rounded-full" to={'/account/guideService/new'}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                     </svg>
 
                 Add new service
-                </link>
+                </Link>
             </div>
             )}
             {action === 'new' &&(
@@ -86,9 +94,9 @@ export default function GuiaServicePage(){
                         </div>
                     
                             <div className="mt-2 grid gap-2 grid-cols-3 md:grid-cols-4 lg:grid- cols-6"> 
-                            {addedPhotos.lenght > 0 && addedPhotos.map(link => (
-                                <div className="h-32 flex">
-                                    <img className="rounded-2xl w-full object-cover"src="{'http://localhost:4000/uploads/}" alt=""></img>
+                            {addedPhotos.length > 0 && addedPhotos.map((link , index) => (
+                                <div key={index} className="h-32 flex">
+                                    <img className="rounded-2xl w-full object-cover" src={`http://localhost:4000/upload/${link}`} alt=""/>
                                 </div>
                             )) }
                             <label className="h-32 cursor-pointer flex items-center gap-1 justify-center border bg-transparent rounded-2xl p-2 text-2xl text-gray-600">
@@ -115,4 +123,5 @@ export default function GuiaServicePage(){
            
         </div>
     );
+    
 }
