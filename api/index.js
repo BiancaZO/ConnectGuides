@@ -20,7 +20,7 @@ const jwtSecret = 'fasdgasdgqawegqadgas';
 app.use(express.json());
 
 
-app.use('/uploads', express.static(__dirname+ '/uploads'));
+app.use('/upload', express.static(__dirname+ '/upload'));
 
 app.use(cookieParser());
 
@@ -77,7 +77,7 @@ app.post('/upload-by-link', async (req,res) => {
     const newName = 'photo' + Date.now() + '.jpg'
     await imageDownloader.image({
          url:link,
-        dest: __dirname + 'uploads',
+        dest: __dirname + 'upload',
     });
     res.json(newName);
 })
@@ -91,10 +91,13 @@ app.post('/upload', photosMiddleware.array('photos' , 100), async (req,res) => {
         const ext = parts[parts.lenght - 1];
         const newPath = path + '.' + ext;
         fs.renameSync(path , newPath);
-        uploadedFiles.push(newPath.replace('uploads/' , ''))
+        uploadedFiles.push(newPath.replace('upload/' , ''))
 
     }
     res.json(uploadedFiles);
+})
+    
+
 
 app.get("/profile", (req, res) => {
   const { token } = req.cookies;

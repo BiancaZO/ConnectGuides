@@ -2,6 +2,7 @@ import { useContext, useState } from "react"
 import { UserContext } from "../UserContext"
 import { Navigate, Link, useParams } from "react-router-dom";
 import axios from 'axios';
+import GuideServicePage from "./GuideServicePage";
 
 export default function AccountPage() {
   const [redirect, setRedirect] = useState(null);
@@ -69,8 +70,8 @@ export default function AccountPage() {
           <button onClick={logout} className="primary max-w-sm mt-2">Logout</button>
         </div>
       )}
-      {subpage === 'guidesServices' &&(
-         <GuideServicePage/>
+      {subpage === 'guideService' &&(
+         <GuideServicePage />
       )}
       </div>
       );
