@@ -4,6 +4,10 @@ import LoginPage from './pages/LoginPage'
 import Layout from "./Layout";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import RegisterPage from './pages/RegisterPage';
+import axios from 'axios';
+
+// Sets the default server URL
+axios.defaults.baseURL = "http://localhost:4000";
 
 function App() {
   return (
