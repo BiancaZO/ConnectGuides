@@ -1,16 +1,13 @@
-// Copiado do Github abaixo - Rafael
-
-// import Header from "./Header"; TIRAR COMENTARIO
+import Header from "./Header";
 import {Outlet} from "react-router-dom";
 
 export default function Layout() {
   return (
     
-    <div className="py-4 px-8 flex flex-col min-h-screen max-w-4xl mx-auto">
-      {/* <Header /> */}
+    <div className="py-2 px-3 flex flex-col min-h-screen max-w-1xl mx-auto">
+      <Header /> 
       <Outlet />
     </div>
   );
 }
 
-// Copiado do Github acima - Rafael
