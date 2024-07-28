@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('./models/User');
+const GuideService = require('./models/GuideService')
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
 const imageDownloader = require('image-downloader');
@@ -192,6 +193,64 @@ app.get("/profile", (req, res) => {
 
 app.post('/logout', (req, res) => {
     res.cookie('token', '').json(true);
+});
+
+app.post('/guideService', (req, res) => {
+    const { token } = req.cookies;
+    const {
+        title, city, addedPhotos, description,
+        services, extraInfo, maxTravelers, price,
+    } = req.body;
+    jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+        if (err) throw err;
+        const guideServiceDoc = await GuideService.create({
+            owner: userData.id, price, 
+            title, city, photos:addedPhotos, description,
+            services, extraInfo, maxTravelers, 
+        })
+        res.json(guideServiceDoc);
+      });
+});
+
+// gets user services
+app.get('/user-guideService', (req, res) => {
+    const { token } = req.cookies;
+    jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+        const {id} = userData;
+        res.json( await GuideService.find({owner:id}) );
+    });
+});
+
+app.get('/guideService/:id', async (req, res) => {
+    const {id} = req.params;
+    res.json(await GuideService.findById(id))
+});
+
+app.put('/guideService', async (req, res) => {
+    const { token } = req.cookies;
+    const {
+        id, title, city, addedPhotos, description,
+        services, extraInfo, maxTravelers, price,
+    } = req.body;
+    jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+        if (err) throw err;
+        const guideServiceDoc = await GuideService.findById(id);
+        if (userData.id === guideServiceDoc.owner.toString()) {
+            guideServiceDoc.set({
+                title, city, photos:addedPhotos, description,
+                services, extraInfo, maxTravelers, price,
+            });
+            await guideServiceDoc.save();
+            res.json('ok');
+        }
+    });
+});
+
+// gets all services
+app.get('/guideService', async (req, res) => {
+    res.json(
+        await GuideService.find()
+    );
 });
 
 app.listen(4000, () => {

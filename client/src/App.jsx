@@ -14,10 +14,11 @@ axios.defaults.withCredentials = true;
 
 import { Routes, Route } from 'react-router-dom'
 import { UserContextProvider } from './UserContext';
-import AccountPage from './pages/AccountPage';
+import ProfilePage from './pages/ProfilePage';
+import GuideServicePage from './pages/GuideServicePage';
+import GuideServiceFormPage from './pages/GuideServiceFormPage';
 
 function App() {
-
 
   return (
     <UserContextProvider>
@@ -26,9 +27,10 @@ function App() {
           <Route index element={<IndexPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/account/:subpage?" element={<AccountPage />} />
-          <Route path="/account/:subpage/:action" element={<AccountPage />} />
-          
+          <Route path="/account" element={<ProfilePage />} />
+          <Route path="/account/guideService" element={<GuideServicePage />} />
+          <Route path="/account/guideService/new" element={<GuideServiceFormPage />} />
+          <Route path="/account/guideService/:id" element={<GuideServiceFormPage />} />
         </Route>
       </Routes>
     </UserContextProvider>
