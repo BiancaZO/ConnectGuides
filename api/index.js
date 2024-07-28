@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('./models/User');
 const GuideService = require('./models/GuideService')
+const Booking = require('./models/Booking');
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
 const imageDownloader = require('image-downloader');
@@ -14,7 +15,9 @@ const app = express();
 
 // TRYING TO USE MULTER TO HANDLE BACKSLASHES - CHATGPT
 const path = require('path');
+
 const { rejects } = require('assert');
+
 // TRYING TO USE MULTER TO HANDLE BACKSLASHES - CHATGPT
 
 // Auto generate salt to add to the encrypted password
@@ -264,8 +267,21 @@ app.get('/guideService', async (req, res) => {
     );
 });
 
-app.listen(4000, () => {
-    console.log('Server running on port 4000');
+// RAFAEL JUL 28
+app.post('/bookings', (req, res) => {
+    const {singleGuideService, checkIn, 
+        checkOut, numberOfTravelers, 
+        name, phone, price,
+    } = req.body;
+    Booking.create({
+        singleGuideService, checkIn, 
+        checkOut, numberOfTravelers, 
+        name, phone, price,
+    }).then((doc) => {
+        res.json(doc);
+    }).catch(() => {
+        throw err;
+    });
 });
 
 //booking - Fabricio
@@ -289,3 +305,9 @@ app.get('/bookings', async (req, res) => {
     const userData = await getUserDataFromReq(req);
     res.json(await Booking.find({user:userData.id}).populate('singleGuideService'))
 });
+
+
+app.listen(4000, () => {
+    console.log('Server running on port 4000');
+});
+
