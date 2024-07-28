@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('./models/User');
 const GuideService = require('./models/GuideService')
+const Booking = require('./models/Booking');
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
 const imageDownloader = require('image-downloader');
@@ -14,6 +15,7 @@ const app = express();
 
 // TRYING TO USE MULTER TO HANDLE BACKSLASHES - CHATGPT
 const path = require('path');
+
 // TRYING TO USE MULTER TO HANDLE BACKSLASHES - CHATGPT
 
 // Auto generate salt to add to the encrypted password
@@ -251,6 +253,23 @@ app.get('/guideService', async (req, res) => {
     res.json(
         await GuideService.find()
     );
+});
+
+// RAFAEL JUL 28
+app.post('/bookings', (req, res) => {
+    const {singleGuideService, checkIn, 
+        checkOut, numberOfTravelers, 
+        name, phone, price,
+    } = req.body;
+    Booking.create({
+        singleGuideService, checkIn, 
+        checkOut, numberOfTravelers, 
+        name, phone, price,
+    }).then((doc) => {
+        res.json(doc);
+    }).catch(() => {
+        throw err;
+    });
 });
 
 app.listen(4000, () => {
