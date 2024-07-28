@@ -17,7 +17,12 @@ import { UserContextProvider } from './UserContext';
 import ProfilePage from './pages/ProfilePage';
 import GuideServicePage from './pages/GuideServicePage';
 import GuideServiceFormPage from './pages/GuideServiceFormPage';
+
+import BookingsPage from './pages/BookingsPage';
+import BookingPage from './pages/BookingPage';
+
 import SingleGuideServicePage from './pages/SingleGuideServicePage';
+
 
 function App() {
 
@@ -32,7 +37,10 @@ function App() {
           <Route path="/account/guideService" element={<GuideServicePage />} />
           <Route path="/account/guideService/new" element={<GuideServiceFormPage />} />
           <Route path="/account/guideService/:id" element={<GuideServiceFormPage />} />
+          <Route path='/account/bookings' element={<BookingsPage />} />
+          <Route path='/account/bookings/:id' element={<BookingPage />} />
           <Route path="/singleGuideService/:id" element={<SingleGuideServicePage />} />
+
         </Route>
       </Routes>
     </UserContextProvider>
