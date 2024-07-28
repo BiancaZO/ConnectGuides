@@ -6,10 +6,14 @@ const jwt = require('jsonwebtoken');
 const User = require('./models/User');
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
-const app = express();
 const imageDownloader = require('image-downloader');
 const multer = require('multer');
 const fs = require('fs');
+const app = express();
+
+// TRYING TO USE MULTER TO HANDLE BACKSLASHES - CHATGPT
+const path = require('path');
+// TRYING TO USE MULTER TO HANDLE BACKSLASHES - CHATGPT
 
 // Auto generate salt to add to the encrypted password
 const bcryptSalt = bcrypt.genSaltSync(10);
@@ -20,7 +24,24 @@ const jwtSecret = 'fasdgasdgqawegqadgas';
 app.use(express.json());
 
 
-app.use('/upload', express.static(__dirname+ '/upload'));
+// PREVIOUS CODE - FROM JUL 20 - COMMENTED BELOW (Rafael - Jul 22)
+// app.use('/upload', express.static(__dirname+ '/upload'));
+app.use('/uploads', express.static(__dirname+'/uploads'));
+
+
+// TRYING TO USE MULTER TO HANDLE BACKSLASHES - CHATGPT
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/');
+    },
+    filename: (req, file, cb) => {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9) + path.extname(file.originalname);
+        cb(null, file.fieldname + '-' + uniqueSuffix);
+    }
+});
+const upload = multer({ storage });
+// TRYING TO USE MULTER TO HANDLE BACKSLASHES - CHATGPT
+
 
 app.use(cookieParser());
 
@@ -72,30 +93,87 @@ app.post('/login', async (req, res) => {
 });
 
 
-app.post('/upload-by-link', async (req,res) => {
-    const{link} = req.body;
-    const newName = 'photo' + Date.now() + '.jpg'
+// PREVIOUS CODE - FROM JUL 20 - COMMENTED BELOW (Rafael - Jul 22)
+// app.post('/upload-by-link', async (req,res) => {
+//     const {link} = req.body;
+//     const newName = 'photo' + Date.now() + '.jpg'
+//     await imageDownloader.image({
+//         url: link,
+//         dest: __dirname + 'upload',  // (Rafael) - Changed from 'upload' to '/uploads/' +newName
+//     });
+//     res.json(newName);
+// })
+
+
+// CODE WORKING - JUL 22 BELOW
+// Function to download the image and save it 
+async function downloadImage(link) {
+    const newName = 'photo' + Date.now() + '.jpg';
     await imageDownloader.image({
-         url:link,
-        dest: __dirname + 'upload',
+        url: link,
+        dest: path.join(__dirname, 'uploads', newName) // Save to uploads directory
     });
-    res.json(newName);
-})
+    return newName;
+}
 
-const photosMiddleware = multer({dest:'upload'});
-app.post('/upload', photosMiddleware.array('photos' , 100), async (req,res) => {
+app.post('/upload-by-link', async (req, res) => {
+    const { link } = req.body;
+    try {
+        const filename = await downloadImage(link);
+        res.json(`/uploads/${filename}`); // Send the relative path
+    } catch (error) {
+        res.status(500).json({ message: 'Failed to download image', error });
+    }
+});
+// CODE WORKING - JUL 22 ABOVE
+
+
+
+
+// PREVIOUS CODE - FROM JUL 20 - COMMENTED BELOW (Rafael - Jul 22)
+// const photosMiddleware = multer({dest:'uploads/'});
+// app.post('/upload', photosMiddleware.array('photos' , 100), async (req,res) => {
+//     const uploadedFiles = [];
+//     for(let i=0; i < req.files.length; i++){
+//         const {path, originalname} = req.files[i];
+//         const parts = originalname.split('.');
+//         const ext = parts[parts.length - 1];
+//         const newPath = path + '.' + ext;
+//         fs.renameSync(path , newPath);
+//         uploadedFiles.push(newPath);
+//         // uploadedFiles.push(newPath.replace('uploads/' , ''));
+
+//     }
+//     res.json(uploadedFiles);
+// })
+
+// const photosMiddleware = multer({ dest: 'uploads/' });
+// app.post('/upload', photosMiddleware.array('photos', 100), async (req, res) => {
+//     const uploadedFiles = [];
+//     for (let i = 0; i < req.files.length; i++) {
+//         const { path: filePath, originalname } = req.files[i];
+//         const parts = originalname.split('.');
+//         const ext = parts[parts.length - 1]; // Corrected typo
+//         const newPath = filePath + '.' + ext;
+//         fs.renameSync(filePath, newPath);
+//         uploadedFiles.push(newPath.replace('uploads/', ''));
+//     }
+//     res.json(uploadedFiles);
+// });
+
+const photosMiddleware = multer({ dest: 'uploads/' });
+app.post('/upload', photosMiddleware.array('photos', 100), async (req, res) => {
     const uploadedFiles = [];
-    for(let i=0; i < req.files.length; i++){
-        const {path, originalname} = req.files[i];
+    for (let i = 0; i < req.files.length; i++) {
+        const { path: filePath, originalname } = req.files[i];
         const parts = originalname.split('.');
-        const ext = parts[parts.lenght - 1];
-        const newPath = path + '.' + ext;
-        fs.renameSync(path , newPath);
-        uploadedFiles.push(newPath.replace('upload/' , ''))
-
+        const ext = parts[parts.length - 1]; // Corrected typo
+        const newPath = filePath + '.' + ext;
+        fs.renameSync(filePath, newPath);
+        uploadedFiles.push(`/uploads/${path.basename(newPath)}`);
     }
     res.json(uploadedFiles);
-})
+});
     
 
 
@@ -116,4 +194,6 @@ app.post('/logout', (req, res) => {
     res.cookie('token', '').json(true);
 });
 
-app.listen(4000);
+app.listen(4000, () => {
+    console.log('Server running on port 4000');
+});
