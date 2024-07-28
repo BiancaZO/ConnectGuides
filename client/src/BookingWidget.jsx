@@ -61,7 +61,7 @@ export default function BookingWidget({singleGuideService}) {
                         value={numberOfTravelers} 
                         onChange={ev => setNumberOfTravelers(ev.target.value)} />
                 </div>
-                {numberOfNights > 0 (
+                {numberOfNights > -1 && (
                     <div className="py-3 px-4 border-t">
                     <label>Your full name:</label>
                     <input type="text" 
@@ -76,8 +76,8 @@ export default function BookingWidget({singleGuideService}) {
             </div>
             <button onClick={bookThisService} className="primary mt-4">
                 Book this service
-                {numberOfNights > 0 && (
-                    <span> ${numberOfNights * singleGuideService.price}</span>
+                {numberOfNights > -1 && (
+                    <span> ${( 1 + numberOfNights) * singleGuideService.price}</span>
                 )}
             </button>
         </div>
