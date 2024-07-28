@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import AccountNav from "../AccountNav";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import GudeServiceImg from "../GuideServiceImg";
 
 export default function GuideServicePage() {
   const [guideService, setGuideService] = useState([]);
@@ -49,13 +50,14 @@ export default function GuideServicePage() {
                 {/* grow property removed from className */}
 
                 {/* {console.log(service.photos[0])} */}
-                {service.photos.length > 0 && (
+                <GudeServiceImg service={service} />
+                {/* {service.photos.length > 0 && (
                   <img
                     className="object-cover"
                     src={"http://localhost:4000" + service.photos[0]}
                     alt={service.title}
                   />
-                )}
+                )} */}
               </div>
               <div className="grow-0 shrink">
                 <h2 className="text-xl">{service.title}</h2>
