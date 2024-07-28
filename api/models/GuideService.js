@@ -15,8 +15,9 @@ const guideServiceSchema = new mongoose.Schema({
   // services: String,
   services: [String], // (Rafael) Acho q o services precisa ser uma lista de strings
   maxTravelers: Number,
-  checkIn: Number,
-  checkOut: Number
+  price: Number
+  // checkIn: Number,
+  // checkOut: Number
 });
 
 const GuideServiceModel = mongoose.model('GuideService', guideServiceSchema);

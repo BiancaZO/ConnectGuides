@@ -11,7 +11,7 @@ export default function Services({selected, onChange}) {
   return (
     <>
       <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-        <input type="checkbox" name="nightLife" onChange={handleCheckboxClick} />
+        <input type="checkbox" checked={selected.includes("nightLife")} name="nightLife" onChange={handleCheckboxClick} />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -30,7 +30,7 @@ export default function Services({selected, onChange}) {
       </label>
 
       <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-        <input type="checkbox" name="dayTime" onChange={handleCheckboxClick} />
+        <input type="checkbox" checked={selected.includes("dayTime")} name="dayTime" onChange={handleCheckboxClick} />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -49,7 +49,7 @@ export default function Services({selected, onChange}) {
       </label>
 
       <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-        <input type="checkbox" name="adventure" onChange={handleCheckboxClick} />
+        <input type="checkbox" checked={selected.includes("adventure")} name="adventure" onChange={handleCheckboxClick} />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -68,7 +68,7 @@ export default function Services({selected, onChange}) {
       </label>
 
       <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-        <input type="checkbox" name="cultureTour" onChange={handleCheckboxClick} />
+        <input type="checkbox" checked={selected.includes("cultureTour")} name="cultureTour" onChange={handleCheckboxClick} />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
