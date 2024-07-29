@@ -22,6 +22,7 @@ import BookingsPage from './pages/BookingsPage';
 import BookingPage from './pages/BookingPage';
 
 import SingleGuideServicePage from './pages/SingleGuideServicePage';
+import SearchResultsPage from './pages/SearchResultsPage';
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
           <Route path='/account/bookings' element={<BookingsPage />} />
           <Route path='/account/bookings/:id' element={<BookingPage />} />
           <Route path="/singleGuideService/:id" element={<SingleGuideServicePage />} />
+          <Route path="/search" element={<SearchResultsPage />} />
 
         </Route>
       </Routes>

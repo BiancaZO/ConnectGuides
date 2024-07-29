@@ -34,10 +34,7 @@ export default function SingleGuideServicePage() {
             <h2 className="font-semibold text 2xl">Description</h2>
             {singleGuideService.description}
           </div>
-          Check-in: {singleGuideService.checkIn}
-          <br />
-          Check-out: {singleGuideService.checkOut}
-          <br />
+
           Max number of Travelers: {singleGuideService.maxTravelers}
         </div>
 

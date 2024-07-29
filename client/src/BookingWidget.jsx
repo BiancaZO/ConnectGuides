@@ -28,15 +28,41 @@ export default function BookingWidget({singleGuideService}) {
         numberOfNights = differenceInCalendarDays(new Date(checkOut), new Date(checkIn));
     }
 
+    // async function bookThisService() {
+    //     const response = await axios.post('/bookings', {
+    //         checkIn, checkOut, numberOfTravelers, name, phone, 
+    //         singleGuideService: singleGuideService._id,
+    //         price: numberOfNights * singleGuideService.price,
+    //     });
+    //     const bookingId = response.data._id;
+    //     setRedirect(`/account/bookings/${bookingId}`);
+    // }
+
     async function bookThisService() {
-        const response = await axios.post('/bookings', {
-            checkIn, checkOut, numberOfTravelers, name, phone, 
-            singleGuideService: singleGuideService._id,
-            price: numberOfNights * singleGuideService.price,
-        });
-        const bookingId = response.data._id;
-        setRedirect(`/account/bookings/${bookingId}`);
+        // Calculate price based on the number of nights
+        const price = numberOfNights === 0 ? singleGuideService.price : numberOfNights * singleGuideService.price;
+        
+        try {
+            // Make the booking request with the calculated price
+            const response = await axios.post('/bookings', {
+                checkIn, 
+                checkOut, 
+                numberOfTravelers, 
+                name, 
+                phone, 
+                singleGuideService: singleGuideService._id,
+                price,
+            });
+    
+            // Redirect to the booking details page
+            const bookingId = response.data._id;
+            setRedirect(`/account/bookings/${bookingId}`);
+        } catch (error) {
+            console.error('Error booking the service:', error);
+            // Handle the error appropriately, e.g., show a notification to the user
+        }
     }
+    
 
     if (redirect) {
         return <Navigate to={redirect} />
@@ -51,13 +77,13 @@ export default function BookingWidget({singleGuideService}) {
             <div className="border rounded-2xl mt-4">
                 <div className="flex">
                     <div className="py-3 px-4">
-                        <label>Check in:</label>
+                        <label>From:</label>
                         <input type="date" 
                             value={checkIn} 
                             onChange={ev => setCheckIn(ev.target.value)} />
                     </div>
                     <div className="py-3 px-4 border-l">
-                        <label>Check out:</label>
+                        <label>To:</label>
                         <input type="date" 
                             value={checkOut} 
                             onChange={ev => setCheckout(ev.target.value)} />
