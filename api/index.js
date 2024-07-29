@@ -211,22 +211,60 @@ app.post('/logout', (req, res) => {
     res.cookie('token', '').json(true);
 });
 
+// app.post('/guideService', (req, res) => {
+//     const { token } = req.cookies;
+//     const {
+//         title, city, addedPhotos, description,
+//         services, extraInfo, maxTravelers, price,
+//     } = req.body;
+//     jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+//         if (err) throw err;
+//         const guideServiceDoc = await GuideService.create({
+//             owner: userData.id, price, 
+//             title, city, photos:addedPhotos, description,
+//             services, extraInfo, maxTravelers, 
+//         })
+//         res.json(guideServiceDoc);
+//       });
+// });
+
 app.post('/guideService', (req, res) => {
     const { token } = req.cookies;
     const {
-        title, city, addedPhotos, description,
-        services, extraInfo, maxTravelers, price,
+      title, city, addedPhotos, description,
+      services, extraInfo, maxTravelers, price,
     } = req.body;
+  
     jwt.verify(token, jwtSecret, {}, async (err, userData) => {
-        if (err) throw err;
+      if (err) throw err;
+  
+      try {
+        // Find the owner document in the User collection
+        const ownerDoc = await User.findById(userData.id);
+        if (!ownerDoc) {
+          return res.status(404).json({ error: 'Owner not found' });
+        }
+  
+        // Create a new GuideService document with the ownerName field
         const guideServiceDoc = await GuideService.create({
-            owner: userData.id, price, 
-            title, city, photos:addedPhotos, description,
-            services, extraInfo, maxTravelers, 
-        })
+          owner: userData.id,
+          ownerName: ownerDoc.name, // Set the ownerName field using the owner's name
+          price,
+          title,
+          city,
+          photos: addedPhotos,
+          description,
+          services,
+          extraInfo,
+          maxTravelers,
+        });
+  
         res.json(guideServiceDoc);
-      });
-});
+      } catch (error) {
+        res.status(500).json({ error: error.message });
+      }
+    });
+  });
 
 // gets user services
 app.get('/user-guideService', (req, res) => {
@@ -242,25 +280,72 @@ app.get('/guideService/:id', async (req, res) => {
     res.json(await GuideService.findById(id))
 });
 
+// app.put('/guideService', async (req, res) => {
+//     const { token } = req.cookies;
+//     const {
+//         id, title, city, addedPhotos, description,
+//         services, extraInfo, maxTravelers, price,
+//     } = req.body;
+//     jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+//         if (err) throw err;
+//         const guideServiceDoc = await GuideService.findById(id);
+//         if (userData.id === guideServiceDoc.owner.toString()) {
+//             guideServiceDoc.set({
+//                 title, city, photos:addedPhotos, description,
+//                 services, extraInfo, maxTravelers, price,
+//             });
+//             await guideServiceDoc.save();
+//             res.json('ok');
+//         }
+//     });
+// });
+
 app.put('/guideService', async (req, res) => {
     const { token } = req.cookies;
     const {
-        id, title, city, addedPhotos, description,
-        services, extraInfo, maxTravelers, price,
+      id, title, city, addedPhotos, description,
+      services, extraInfo, maxTravelers, price,
     } = req.body;
+  
     jwt.verify(token, jwtSecret, {}, async (err, userData) => {
-        if (err) throw err;
+      if (err) throw err;
+  
+      try {
         const guideServiceDoc = await GuideService.findById(id);
-        if (userData.id === guideServiceDoc.owner.toString()) {
-            guideServiceDoc.set({
-                title, city, photos:addedPhotos, description,
-                services, extraInfo, maxTravelers, price,
-            });
-            await guideServiceDoc.save();
-            res.json('ok');
+        if (!guideServiceDoc) {
+          return res.status(404).json({ error: 'Guide service not found' });
         }
+  
+        if (userData.id !== guideServiceDoc.owner.toString()) {
+          return res.status(403).json({ error: 'Unauthorized' });
+        }
+  
+        // Find the owner document in the User collection
+        const ownerDoc = await User.findById(userData.id);
+        if (!ownerDoc) {
+          return res.status(404).json({ error: 'Owner not found' });
+        }
+  
+        // Update the GuideService document with the new fields including ownerName
+        guideServiceDoc.set({
+          title,
+          city,
+          photos: addedPhotos,
+          description,
+          services,
+          extraInfo,
+          maxTravelers,
+          price,
+          ownerName: ownerDoc.name, // Update the ownerName field
+        });
+  
+        await guideServiceDoc.save();
+        res.json('ok');
+      } catch (error) {
+        res.status(500).json({ error: error.message });
+      }
     });
-});
+  });
 
 // gets all services
 app.get('/guideService', async (req, res) => {
