@@ -2,7 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import AccountNav from "../AccountNav";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import GudeServiceImg from "../GuideServiceImg";
+import GuideServiceImg from "../GuideServiceImg";
 
 export default function GuideServicePage() {
   const [guideService, setGuideService] = useState([]);
@@ -44,13 +44,13 @@ export default function GuideServicePage() {
             <Link
               key={service._id}
               to={"/account/guideService/" + service._id}
-              className="flex cursor-pointer gap-4 bg-gray-100 p-4 rounded-2xl"
+              className="flex cursor-pointer gap-4 bg-gray-100 p-4 rounded-2xl m-2"
             >
               <div className="flex w-32 h-32 bg-gray-300 shrink-0"> 
                 {/* grow property removed from className */}
 
                 {/* {console.log(service.photos[0])} */}
-                <GudeServiceImg service={service} />
+                <GuideServiceImg service={service} />
                 {/* {service.photos.length > 0 && (
                   <img
                     className="object-cover"

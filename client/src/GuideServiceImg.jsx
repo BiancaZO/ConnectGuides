@@ -1,5 +1,5 @@
-export default function GudeServiceImg({service, index=0, className=null}){
-    if(!service.photos?.lenght){
+export default function GuideServiceImg({service, index=0, className=null}){
+    if(!service.photos?.length){
         return '';
     }
     if(!className){
