@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const guideServiceSchema = new mongoose.Schema({
   // owner references to the User collection
   owner: {type:mongoose.Schema.Types.ObjectId, ref:'User'},
+  ownerName: String,
   title: String,
   name: String,
   city: String,

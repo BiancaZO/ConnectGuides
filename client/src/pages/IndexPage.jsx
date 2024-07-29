@@ -21,7 +21,8 @@ export default function IndexPage() {
                 <img className="rounded-2xl object-cover aspect-square" src={"http://localhost:4000" + service.photos?.[0]} />
               )}
             </div>
-            <h2 className="font-bold">{service.city}</h2>
+            <h2 className="font-bold">{service.ownerName}</h2>
+            <h2 className="font-bold text-sm">{service.city}</h2>
             <h3 className="text-sm truncate text-gray-500">{service.title}</h3>
             <div className="mt-2">
               <span className="font-bold">${service.price}</span>
