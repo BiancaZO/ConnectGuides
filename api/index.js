@@ -58,8 +58,8 @@ app.use(cors({
 mongoose.connect(process.env.MONGO_URL);
 
 // booking - Fabricio
-function getUserDataFromToken(req) {
-    return new promise((resolve, reject) =>{
+function getUserDataFromReq(req) {
+    return new Promise((resolve, reject) =>{
         jwt.verify(req.cookies.token, jwtSecret, {}, async (err, userData) => {
             if(err) throw err;
             resolve(userData);
@@ -268,7 +268,8 @@ app.get('/guideService', async (req, res) => {
 });
 
 // RAFAEL JUL 28
-app.post('/bookings', (req, res) => {
+app.post('/bookings', async (req, res) => {
+    const userData = await getUserDataFromReq(req);
     const {singleGuideService, checkIn, 
         checkOut, numberOfTravelers, 
         name, phone, price,
@@ -276,7 +277,7 @@ app.post('/bookings', (req, res) => {
     Booking.create({
         singleGuideService, checkIn, 
         checkOut, numberOfTravelers, 
-        name, phone, price,
+        name, phone, price, user:userData.id,
     }).then((doc) => {
         res.json(doc);
     }).catch(() => {
@@ -284,22 +285,22 @@ app.post('/bookings', (req, res) => {
     });
 });
 
-//booking - Fabricio
-app.post('/api/bookings', async (req, res) => {
-    //mongoose.connect(process.env.MONGO_URL);
-    const userData = await getUserDataFromReq(req);
-    const {
-      place,checkIn,checkOut,numberOfTravelers,name,phone,price,
-    } = req.body;
-    Booking.create({
-      place,checkIn,checkOut,numberOfGuests,name,phone,price,
-      user:userData.id,
-    }).then((doc) => {
-      res.json(doc);
-    }).catch((err) => {
-      throw err;
-    });
-  });
+// //booking - Fabricio
+// app.post('/api/bookings', async (req, res) => {
+//     //mongoose.connect(process.env.MONGO_URL);
+//     const userData = await getUserDataFromReq(req);
+//     const {
+//       place,checkIn,checkOut,numberOfTravelers,name,phone,price,
+//     } = req.body;
+//     Booking.create({
+//       place,checkIn,checkOut,numberOfGuests,name,phone,price,
+//       user:userData.id,
+//     }).then((doc) => {
+//       res.json(doc);
+//     }).catch((err) => {
+//       throw err;
+//     });
+//   });
 
 app.get('/bookings', async (req, res) => {
     const userData = await getUserDataFromReq(req);

@@ -15,7 +15,7 @@ export default function IndexPage() {
     <div className="mt-8 grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {guideService.length > 0 &&
         guideService.map((service) => (
-          <Link to={'/singleGuideService/'+ service._id}>
+          <Link to={'/singleGuideService/'+ service._id} key={service._id}>
             <div className="bg-gray-500 mb-2 rounded-2xl flex">
               {service.photos?.[0] && (
                 <img className="rounded-2xl object-cover aspect-square" src={"http://localhost:4000" + service.photos?.[0]} />
