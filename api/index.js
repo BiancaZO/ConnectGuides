@@ -309,6 +309,17 @@ app.get('/bookings', async (req, res) => {
     res.json(await Booking.find({user:userData.id}).populate('singleGuideService'))
 });
 
+app.get('/search', async (req, res) => {
+    const { query } = req.query;
+    try {
+        const results = await GuideService.find({ city: new RegExp(query, 'i') });
+        res.json(results);
+    } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+
 
 app.listen(4000, () => {
     console.log('Server running on port 4000');

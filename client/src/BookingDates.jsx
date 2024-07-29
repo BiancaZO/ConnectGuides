@@ -3,11 +3,11 @@ import { differenceInCalendarDays, format } from "date-fns";
 export default function BookingDates({booking, className}) {
   return (
     <div className={"flex gap-1 " + className}>
-      {differenceInCalendarDays(
+      {/* {differenceInCalendarDays(
         new Date(booking.checkOut),
         new Date(booking.checkIn)
       )}{" "}
-      days:
+      days: */}
       <div className="flex gap-1 items-center ml-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
