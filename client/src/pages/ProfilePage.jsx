@@ -10,7 +10,7 @@ export default function ProfilePage() {
   const {ready, user, setUser} = useContext(UserContext);
   let {subpage} =  useParams();
   if (subpage === undefined) {
-    subpage = 'profile';
+    subpage = 'account';
   }
 
   async function logout() {
@@ -36,35 +36,53 @@ export default function ProfilePage() {
   return (
     <div>
       <AccountNav />
-      {subpage === 'profile' && (
-        <div className="text-center max-w-xl mx-auto">
-          Logged in as {user.name} ({user.email})<br />
-          <button onClick={logout} className="primary max-w-sm mt-2">Logout</button>
+      <div className="max-w-md mx-auto mt-8 p-6 bg-blue shadow-lg rounded-3xl">
+        <div className="bg-white shadow p-6 rounded-xl">
+        <div className="flex flex-col sm:flex-row items-center sm:items-start">
+          
+            <div className="py-4 px-6 flex-shrink-0">
+              <img
+                src="/assets/profile.png"
+                alt="profile picture"
+                className="w-24 h-24 rounded-full border-4 border-blue-400"
+              />
+            </div>
+            <div className="py-4 px-6 sm:border-l sm:border-blue-200 sm:ml-6">
+              <h1 className="text-3xl font-bold text-blue-700 mb-4">Profile</h1>
+              <p className="text-lg text-gray-800 mb-2">
+                Welcome, <span className="font-semibold text-blue-800">{user.name}</span>!
+              </p>
+              <p className="text-lg text-gray-800 mb-2">
+                Email: <span className="font-semibold text-blue-800">{user.email}</span>
+              </p>
+              <p className="text-lg text-gray-800 mb-2">
+                Phone: <span className="font-semibold text-blue-800">{user.phone}</span>
+              </p>
+              <p className="text-lg text-gray-800">
+                Address: <span className="font-semibold text-blue-800">{user.address}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+     
+      {subpage === 'account' && (
+        <div className="text-center max-w-xl mx-auto mt-6">
+          <p className="text-lg text-gray-800 mb-4">
+            Logged in as <span className="font-semibold">{user.name}</span> ({user.email})
+          </p>
+          <button onClick={logout} className="primary mt-4 px-6 py-2 hover: bg-blueDark transition duration-300 ">
+            Logout
+          </button>
         </div>
       )}
-      {subpage === 'guideService' &&(
-         <GuideServicePage />
+  
+      
+      {subpage === 'guideService' && (
+        <GuideServicePage />
       )}
-      </div>
-      );
+    </div>
+  );
 }
 
-// //arquivo criado porem nao encontrei no git dele
-
-// //parte relacionada com GuidePage.jsx 
-// {subpage === 'guidesServices' &&(
-//     <GuideServicePage/>
-// )}
-// //dentro da function linkClasses alterar let cl6sses:
-// /* let classes ='inline-flex gap-1 py-2 px-6 rounded-ful';
-//    if(type === subpage){
-//    } else {
-//     classes += 'bg-gray-200';
-// }
-
-
-
-// //My accomodations
-// <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-//   <path strokeLinecap="round" strokeLinejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z" />
-// </svg>

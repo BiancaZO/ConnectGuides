@@ -72,13 +72,15 @@ app.get('/test', (req, res) => {
 });
 
 app.post('/register', async (req, res) => {
-    const {name, email, password} = req.body;
+    const {name, email, password,phone,address} = req.body;
 
     try {
         const userDoc = await User.create({
             name,
             email,
             password:bcrypt.hashSync(password, bcryptSalt),
+            phone,
+            address
         });
         res.json(userDoc);
     } catch (e) {
@@ -192,7 +194,7 @@ app.post('/upload', photosMiddleware.array('photos', 100), async (req, res) => {
     
 
 
-app.get("/profile", (req, res) => {
+app.get("/account", (req, res) => {
   const { token } = req.cookies;
   if (token) {
     jwt.verify(token, jwtSecret, {}, async (err, userData) => {
