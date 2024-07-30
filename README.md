@@ -1,5 +1,7 @@
 <p align="center">
   <img src="client/public/assets/logo.png" alt="App logo" height="200"/>
+</p>
+<p align="center">
   <img src="client/public/assets/logoName.png" alt="App name" height="50"/>
 </p>
 
