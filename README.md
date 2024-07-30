@@ -14,7 +14,6 @@ Students:
 - [Features](#features)
 - [Technologies](#technologies)
 - [Installation](#installation)
-- [Contributing](#contributing)
 - [Contact](#contact)
 
 ## About
@@ -55,3 +54,26 @@ This project is built using the following technologies:
 ```bash
 git clone https://github.com/BiancaZO/ConnectGuides.git
 cd connectguides
+
+2. Install dependencies for both client and server:
+
+cd client
+yarn install
+cd ../api
+yarn install
+
+3. Set up environment variables:
+
+Create a .env file in the api directory with the following content:
+MONGO_URL=mongodb://localhost:27017/connectguides
+JWT_SECRET=your_jwt_secret
+
+4. Start the development server:
+
+# In the api directory
+yarn dev
+
+# In the client directory
+yarn dev
+
+5. Open your browser and navigate to http://localhost:5173.
