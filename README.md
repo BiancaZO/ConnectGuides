@@ -1,5 +1,5 @@
 
-<img style="margin: auto;" src="client/public/assets/logo.png" alt="App logo" height="200"/>
+<img style="display: block; margin: auto;" src="client/public/assets/logo.png" alt="App logo" height="200"/>
 <img src="client/public/assets/logoName.png" alt="App name" height="50"/>
 
 # Group 5
