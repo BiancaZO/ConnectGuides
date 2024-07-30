@@ -15,6 +15,7 @@ Students:
 - [Technologies](#technologies)
 - [Installation](#installation)
 - [Usage](#usage)
+- [API Endpoints](#api)
 - [Contact](#contact)
 
 ## About
@@ -105,3 +106,19 @@ yarn dev
 
 **5. Manage Bookings:**
 - Users can view and manage their bookings.
+
+## API Endpoints
+**Authentication**
+- POST /register: Register a new user
+- POST /login: Log in a user
+  
+**Guide Services**
+- POST /guideService: Create a new guide service
+- PUT /guideService: Update a guide service
+- GET /guideService: Get all guide services
+- GET /guideService/:id: Get a specific guide service
+  
+**Bookings**
+- POST /bookings: Create a new booking
+- GET /bookings: Get all bookings
+- GET /bookings/:id: Get a specific booking
