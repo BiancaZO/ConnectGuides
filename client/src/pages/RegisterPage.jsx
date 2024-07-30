@@ -18,7 +18,7 @@ export default function RegisterPage() {
     alert("All fields cannot be empty.");
     return false;
   }
- //email validationn
+ //name validation
   if (!name.trim()) {
     alert("Name cannot be empty.");
     return false;
@@ -54,7 +54,7 @@ export default function RegisterPage() {
     alert("Phone number cannot be empty.");
     return false;
   }
-  const phoneRegex = /^\d+$/; // Apenas números
+  const phoneRegex = /^\d+$/; // only numbers
   if (!phoneRegex.test(phone)) {
     alert("Phone number can only contain numbers.");
     return false;
@@ -83,9 +83,6 @@ export default function RegisterPage() {
     }
   }
   
-
-  
-
   return (
     <div className="mt-4 grow flex items-center justify-around">
         {redirectToLogin && <Navigate to="/login" />} 

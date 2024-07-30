@@ -11,9 +11,9 @@ export default function GuideServiceFormPage() {
   const [city, setCity] = useState("");
   const [addedPhotos, setAddedPhotos] = useState([]);
   const [description, setDescription] = useState("");
-  const [services, setSevices] = useState([]); //antigo Perks --DELETAR COMMENTS
+  const [services, setSevices] = useState([]);
   const [extraInfo, setExtraInfo] = useState("");
-  const [maxTravelers, setMaxTravelers] = useState(1); //antigo maxGuests --DELETAR COMMENTS
+  const [maxTravelers, setMaxTravelers] = useState(1); 
   const [price, setPrice] = useState(100);
   const [redirect, setRedirect] = useState(false);
   useEffect(() => {
@@ -32,8 +32,6 @@ export default function GuideServiceFormPage() {
       setPrice(data.price);
     });
   }, [id]);
-  // const[checkIn, setCheckIn] = useState('');
-  // const[checkOut, setCheckout] = useState('');
 
   function inputHeader(text) {
     return <h2 className="text-2xl mt-4">{text}</h2>;

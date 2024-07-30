@@ -13,20 +13,11 @@ const guideServiceSchema = new mongoose.Schema({
   phone: Number,
   email: String,
   price: Number,
-  // services: String,
-  services: [String], // (Rafael) Acho q o services precisa ser uma lista de strings
+  services: [String],
   maxTravelers: Number,
   price: Number
-  // checkIn: Number,
-  // checkOut: Number
 });
 
 const GuideServiceModel = mongoose.model('GuideService', guideServiceSchema);
 
 module.exports = GuideServiceModel;
-
-
-// (Rafael) Other possible attributes: 
-// checkIn: Number,
-// checkOut: Number,
-// maxGuests: Number,
