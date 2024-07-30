@@ -54,6 +54,7 @@ This project is built using the following technologies:
 ```bash
 git clone https://github.com/BiancaZO/ConnectGuides.git
 cd connectguides
+```bash
 
 2. Install dependencies for both client and server:
 
