@@ -14,6 +14,7 @@ Students:
 - [Features](#features)
 - [Technologies](#technologies)
 - [Installation](#installation)
+- [Usage](#usage)
 - [Contact](#contact)
 
 ## About
@@ -84,3 +85,23 @@ yarn dev
 ```
 
 5. Open your browser and navigate to http://localhost:5173.
+
+## Usage
+**1. User Registration and Authentication:**
+- Users can sign up and log in to access the platform.
+- Authentication is managed using JWT.
+  
+**2. Guide Registration and Service Listing:**
+- Guides can register and list their services.
+- Each service includes details such as title, city, photos, description, and price.
+  
+**3. Browse and Search for Guide Services:**
+- Users can browse available services.
+- The search functionality allows users to filter services by city.
+
+**4. Booking Services:**
+- Users can book guide services.
+- Booking details include dates, number of travelers, and contact information.
+
+**5. Manage Bookings:**
+- Users can view and manage their bookings.
