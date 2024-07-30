@@ -1,8 +1,6 @@
-<div style="display: flex; justify-content: center; align-items: center; height: 400px;">
-  <img src="client/public/assets/logo.png" alt="App logo" height="200"/>
-  <img src="client/public/assets/logoName.png" alt="App name" height="50"/>
-</div>
 
+<img src="client/public/assets/logo.png" alt="App logo" height="200"/>
+<img src="client/public/assets/logoName.png" alt="App name" height="50"/>
 
 # Group 5
 Students:
