@@ -1,11 +1,16 @@
-# ConnectGuides - Group 5
+<div style="text-align: center;">
+  <img src="client/public/assets/logo.png" alt="App logo" height="200"/>
+  <img src="client/public/assets/logoName.png" alt="App name" height="50"/>
+</div>
+
+
+# Group 5
 Students:
 - Bianca Barbosa Zanol de Oliveira
 - Fabricio L. Gardin
 - Rafael Martins de Paiva Bastos
 
-<img src="client/public/assets/logo.png" alt="Example Image" height="200"/>
-<img src="client/public/assets/logoName.png" alt="Example Image" height="50"/>
+
 
 ## Table of Contents
 
