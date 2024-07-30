@@ -76,14 +76,13 @@ yarn install
 Create a .env file in the api directory with the following content:
 ```bash
 MONGO_URL=mongodb://localhost:27017/connectguides
-JWT_SECRET=your_jwt_secret
 ```
 
 4. Start the development server:
 
 ```bash
 # In the api directory
-node server
+nodemon server
 
 # In the client directory
 yarn dev
