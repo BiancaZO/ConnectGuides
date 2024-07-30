@@ -15,7 +15,7 @@ Students:
 - [Technologies](#technologies)
 - [Installation](#installation)
 - [Usage](#usage)
-- [API Endpoints](#api)
+- [API Endpoints](#api-endpoints)
 - [Contact](#contact)
 
 ## About
