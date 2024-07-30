@@ -58,10 +58,12 @@ cd connectguides
 
 2. Install dependencies for both client and server:
 
+```shell
 cd client
 yarn install
 cd ../api
 yarn install
+```
 
 3. Set up environment variables:
 
