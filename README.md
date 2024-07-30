@@ -8,6 +8,8 @@ Students:
 - Fabricio L. Gardin
 - Rafael Martins de Paiva Bastos
 
+> **⚠️ This application was developed as the final project for the Software Engineering course at Douglas College, Summer Semester of 2023.**
+
 ## Table of Contents
 
 - [About ConnectGuides](#about)
