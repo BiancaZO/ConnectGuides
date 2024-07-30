@@ -122,3 +122,6 @@ yarn dev
 - POST /bookings: Create a new booking
 - GET /bookings: Get all bookings
 - GET /bookings/:id: Get a specific booking
+
+## Contact
+For any questions or suggestions, please contact us.
