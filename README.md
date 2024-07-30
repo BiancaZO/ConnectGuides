@@ -1,5 +1,5 @@
-# Project Name
-## Group 5 - ConnectGuides
+# ConnectGuides
+## Group 5
 Students:
 - Bianca Barbosa Zanol de Oliveira
 - Fabricio L. Gardin
