@@ -8,47 +8,50 @@ Students:
 - Fabricio L. Gardin
 - Rafael Martins de Paiva Bastos
 
-
-
 ## Table of Contents
 
-- [About](#about)
+- [About ConnectGuides](#about)
 - [Features](#features)
 - [Technologies](#technologies)
 - [Installation](#installation)
 - [Usage](#usage)
 - [API Documentation](#api-documentation)
 - [Contributing](#contributing)
+- [Contact](#contact)
 
 ## About
 
-A brief description of what your project does, its purpose, and any essential background information.
+ConnectGuides is a MERN stack application for connecting travelers with local guides. Users can browse available guide services, search for guides at specific locations, and book tours. Guides can register, list their services, and manage bookings.
 
 ## Features
 
-- Feature 1: Description
-- Feature 2: Description
-- Feature 3: Description
+- User registration and authentication
+- Guide registration and service listing
+- Browse and search for guide services by city
+- Book guide services
+- Manage bookings
+- Upload and display images for guide services
+- Responsive design
 
 ## Technologies
 
 This project is built using the following technologies:
 
-- **MongoDB**: Database
-- **Express.js**: Web framework for Node.js
-- **React**: Frontend library
-- **Node.js**: JavaScript runtime
+- **Frontend**: React, Tailwind CSS
+- **Backend**: Node.js, Express.js, MongoDB, Mongoose, Axios
+- **Authentication**: JWT (JSON Web Tokens)
+- **Styling**: Tailwind CSS
 
 ## Installation
 
 ### Prerequisites
 
-- Node.js (v14.x or later)
+- Node.js
 - npm or yarn
 - MongoDB instance
 
 ### Clone the Repository
 
 ```sh
-git clone https://github.com/yourusername/yourprojectname.git
-cd yourprojectname
+git clone https://github.com/BiancaZO/ConnectGuides.git
+cd connectguides
