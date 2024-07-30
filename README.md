@@ -1,8 +1,7 @@
 <p align="center">
   <img src="client/public/assets/logo.png" alt="App logo" height="200"/>
+  <img src="client/public/assets/logoName.png" alt="App name" height="50"/>
 </p>
-
-<img src="client/public/assets/logoName.png" alt="App name" height="50"/>
 
 # Group 5
 Students:
