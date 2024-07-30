@@ -4,7 +4,7 @@ Students:
 - Fabricio L. Gardin
 - Rafael Martins de Paiva Bastos
 
-![Project Logo](client/public/assets/logo.png)
+<img src="client/public/assets/logo.png" alt="Example Image" width="200"/>
 
 ## Table of Contents
 
