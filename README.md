@@ -14,8 +14,6 @@ Students:
 - [Features](#features)
 - [Technologies](#technologies)
 - [Installation](#installation)
-- [Usage](#usage)
-- [API Documentation](#api-documentation)
 - [Contributing](#contributing)
 - [Contact](#contact)
 
@@ -37,7 +35,7 @@ ConnectGuides is a MERN stack application for connecting travelers with local gu
 
 This project is built using the following technologies:
 
-- **Frontend**: React, Tailwind CSS
+- **Frontend**: React
 - **Backend**: Node.js, Express.js, MongoDB, Mongoose, Axios
 - **Authentication**: JWT (JSON Web Tokens)
 - **Styling**: Tailwind CSS
@@ -50,8 +48,10 @@ This project is built using the following technologies:
 - npm or yarn
 - MongoDB instance
 
-### Clone the Repository
+### Steps
 
-```sh
+1. Clone the repository:
+
+```bash
 git clone https://github.com/BiancaZO/ConnectGuides.git
 cd connectguides
