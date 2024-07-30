@@ -63,6 +63,7 @@ cd connectguides
 ```bash
 cd client
 yarn install
+
 cd ../api
 yarn install
 ```
@@ -79,7 +80,7 @@ JWT_SECRET=your_jwt_secret
 
 ```bash
 # In the api directory
-yarn dev
+node server
 
 # In the client directory
 yarn dev
