@@ -4,7 +4,7 @@ Students:
 - Fabricio L. Gardin
 - Rafael Martins de Paiva Bastos
 
-![Project Logo](link_to_logo)
+![Project Logo](client/public/assets/logo.png)
 
 ## Table of Contents
 
@@ -34,11 +34,6 @@ This project is built using the following technologies:
 - **Express.js**: Web framework for Node.js
 - **React**: Frontend library
 - **Node.js**: JavaScript runtime
-- **ChakraUI**: UI component library
-- **GraphQL & Apollo Client/Server**: Query language for your API
-- **Stripe**: Payment processing
-- **Amazon S3**: Object storage service
-- **Amazon SES**: Email sending service
 
 ## Installation
 
