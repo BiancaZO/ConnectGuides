@@ -62,6 +62,13 @@ cd connectguides
 ```
 
 2. Install dependencies for both client and server:
+If you don't have yarn installed, please run the following:
+
+```bash
+npm install --global yarn
+```
+
+Then,
 
 ```bash
 cd client
