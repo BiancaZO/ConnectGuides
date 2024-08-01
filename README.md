@@ -49,7 +49,7 @@ This project is built using the following technologies:
 ### Prerequisites
 
 - Node.js
-- npm or yarn
+- yarn (preferred) or npm
 - MongoDB instance
 
 ### Steps
