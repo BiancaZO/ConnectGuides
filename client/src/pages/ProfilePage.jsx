@@ -26,8 +26,6 @@ export default function ProfilePage() {
   if (ready && !user && !redirect) {
     return <Navigate to={'/login'} />
   }
-
-  // const {subpage} =  useParams();
     
   if (redirect) {
     return <Navigate to={redirect} />
@@ -36,8 +34,8 @@ export default function ProfilePage() {
   return (
     <div>
       <AccountNav />
-      <div className="max-w-md mx-auto mt-8 p-6 bg-blue shadow-lg rounded-3xl">
-        <div className="bg-white shadow p-6 rounded-xl">
+      <div className="max-w-md mx-auto mt-8 p-4 bg-blue shadow-lg rounded-3xl">
+        <div className="bg-white shadow p-4 rounded-xl">
         <div className="flex flex-col sm:flex-row items-center sm:items-start">
           
             <div className="py-4 px-6 flex-shrink-0">
@@ -85,4 +83,3 @@ export default function ProfilePage() {
     </div>
   );
 }
-

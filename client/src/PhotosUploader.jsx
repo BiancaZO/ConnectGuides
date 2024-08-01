@@ -50,33 +50,6 @@ export default function PhotosUploader({ addedPhotos, onChange }) {
     onChange(newAddedPhotos);
   }
 
-  // function uploadPhoto(event) {
-  //     const files = event.target.files;
-  //     const data = new FormData();
-  //     for (const file of files) {
-  //         data.set('photos', file);
-  //     }
-
-  //     axios.post('/upload', data, {
-  //         headers: {'Content-type':'multipart/form-data'}
-  //     }).then(response => {
-  //         const {data: filename} = response;
-  //         setAddedPhotos(prev => {
-  //             return [...prev, filename];
-  //         });
-  //     })
-
-  // }
-
-  // TRYING TO USE MULTER TO HANDLE BACKSLASHES - CHATGPT
-  // async function addPhotoByLink(event) {
-  //     event.preventDefault();
-  //     const { data: filename } = await axios.post('/upload-by-link', { link: photoLink });
-  //     setAddedPhotos(prev => [...prev, filename]);
-  //     setPhotoLink('');
-  // }
-  // TRYING TO USE MULTER TO HANDLE BACKSLASHES - CHATGPT
-
   return (
     <>
       <div className="flex gap-2">

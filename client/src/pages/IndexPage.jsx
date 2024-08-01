@@ -22,7 +22,7 @@ export default function IndexPage() {
               )}
             </div>
             <h2 className="font-bold">{service.ownerName}</h2>
-            <h2 className="font-bold text-sm">{service.city}</h2>
+            <h2 className="font-bold text-sm text-blue200">{service.city}</h2>
             <h3 className="text-sm truncate text-gray-500">{service.title}</h3>
             <div className="mt-2">
               <span className="font-bold">${service.price}</span>

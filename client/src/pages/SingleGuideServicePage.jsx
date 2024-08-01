@@ -8,7 +8,6 @@ import AddressLink from "../AddressLink";
 export default function SingleGuideServicePage() {
   const { id } = useParams();
   const [singleGuideService, setSingleGuideService] = useState(null);
-  // const [showAllPhotos, setShowAllPhotos] = useState(false);
   useEffect(() => {
     if (!id) {
       return;
