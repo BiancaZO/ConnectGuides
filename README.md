@@ -66,7 +66,7 @@ cd connectguides
 
 2. Install dependencies for both client and server:
    
-  2.1 Using yarn, please run the following in the terminal:
+  2.1 If you are using yarn, please run the following in the terminal:
 
 ```bash
 npm install --global yarn
@@ -82,7 +82,7 @@ cd ../api
 yarn install
 ```
 
-  2.2 Using npm, please run the following in the terminal:
+  2.2 If you are using npm, please run the following in the terminal:
 
 ```bash
 npm install 
@@ -103,11 +103,11 @@ npm install
   3.1 Using yarn:
 
 ```bash
-# First, in the api directory
+# In the first terminal, in the api directory
 cd api
 nodemon server
 
-# Second, in the client directory
+# In the second terminal, in the client directory
 cd client
 yarn dev
 ```
@@ -115,12 +115,11 @@ yarn dev
   3.2. Using npm:
 
 ```bash
-# First, in the api directory
+# In the first terminal, in the api directory
 cd api
-npm install 
 node index.js
 
-# Second, in the client directory
+# In the second terminal, in the client directory
 cd client
 npm run build
 npm run dev
