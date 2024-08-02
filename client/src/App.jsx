@@ -21,6 +21,10 @@ import BookingPage from './pages/BookingPage';
 import SingleGuideServicePage from './pages/SingleGuideServicePage';
 import SearchResultsPage from './pages/SearchResultsPage';
 
+import AboutUs from "./pages/AboutUs";
+import Contact from "./pages/Contact";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+
 function App() {
 
   return (
@@ -38,6 +42,9 @@ function App() {
           <Route path='/account/bookings/:id' element={<BookingPage />} />
           <Route path="/singleGuideService/:id" element={<SingleGuideServicePage />} />
           <Route path="/search" element={<SearchResultsPage />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
         </Route>
       </Routes>
     </UserContextProvider>
