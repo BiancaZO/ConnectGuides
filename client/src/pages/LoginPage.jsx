@@ -17,7 +17,13 @@ export default function LoginPage() {
       alert('Login successful');
       setRedirect(true);
     } catch (e) {
-      alert("Login failed");
+      if (e.response && e.response.status === 401) {
+        alert("Invalid password");
+      } else if (e.response && e.response.status === 404) {
+        alert("User not found");
+      } else {
+        alert("Login failed");
+      }
     }
   }
 

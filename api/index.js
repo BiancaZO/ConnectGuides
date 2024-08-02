@@ -76,26 +76,50 @@ app.post('/register', async (req, res) => {
     } 
 });
 
+
+
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
   const userDoc = await User.findOne({email});
   if (userDoc) {
-    const passOk = bcrypt.compareSync(password, userDoc.password)
+    const passOk = bcrypt.compareSync(password, userDoc.password);
     if (passOk) {
-        jwt.sign({
-            email:userDoc.email, 
-            id:userDoc._id
-        }, jwtSecret, {}, (err, token) => {
-            if (err) throw err;
-            res.cookie('token', token).json(userDoc);
-        });    
+      jwt.sign({
+        email:userDoc.email, 
+        id:userDoc._id
+      }, jwtSecret, {}, (err, token) => {
+        if (err) throw err;
+        res.cookie('token', token).json(userDoc);
+      });    
     } else {
-        res.status(422).json('pass not ok');
+      res.status(401).json({ error: 'Invalid password' });
     }
   } else {
-    res.json('not found');
+    res.status(404).json({ error: 'User not found' });
   }
 });
+
+
+// app.post('/login', async (req, res) => {
+//   const { email, password } = req.body;
+//   const userDoc = await User.findOne({email});
+//   if (userDoc) {
+//     const passOk = bcrypt.compareSync(password, userDoc.password)
+//     if (passOk) {
+//         jwt.sign({
+//             email:userDoc.email, 
+//             id:userDoc._id
+//         }, jwtSecret, {}, (err, token) => {
+//             if (err) throw err;
+//             res.cookie('token', token).json(userDoc);
+//         });    
+//     } else {
+//         res.status(422).json('pass not ok');
+//     }
+//   } else {
+//     res.json('not found');
+//   }
+// });
 
 async function downloadImage(link) {
     const newName = 'photo' + Date.now() + '.jpg';
