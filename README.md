@@ -65,7 +65,6 @@ cd connectguides
 ```
 
 2. Install dependencies for both client and server:
- 
   2.1 Using yarn, please run the following in the terminal:
 
 ```bash
@@ -96,11 +95,10 @@ npm install
 
 cd ../api
 npm install 
-node index.js
 ```
 
 3. Start the development server, open TWO terminals:
-  3.1. Using yarn:
+  3.1 Using yarn:
 
 ```bash
 # First, in the api directory
