@@ -24,6 +24,7 @@ import SearchResultsPage from './pages/SearchResultsPage';
 import AboutUs from "./pages/AboutUs";
 import Contact from "./pages/Contact";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import PrivacyConsentAgreement from './pages/PrivacyConsentAgreement';
 
 function App() {
 
@@ -45,6 +46,7 @@ function App() {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/privacyAgreement" element={<PrivacyConsentAgreement />} />          
         </Route>
       </Routes>
     </UserContextProvider>
