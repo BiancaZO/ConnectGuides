@@ -66,7 +66,7 @@ cd connectguides
 
 2. Install dependencies for both client and server:
  
-2.1 Using yarn, please run the following:
+  2.1 Using yarn, please run the following in the terminal:
 
 ```bash
 npm install --global yarn
@@ -82,7 +82,7 @@ cd ../api
 yarn install
 ```
 
-2.2 Using npm, please run the following in the terminal:
+  2.2 Using npm, please run the following in the terminal:
 
 ```bash
 npm install 
@@ -100,7 +100,7 @@ node index.js
 ```
 
 3. Start the development server, open TWO terminals:
-3.1. Using yarn:
+  3.1. Using yarn:
 
 ```bash
 # First, in the api directory
@@ -110,8 +110,9 @@ nodemon server
 # Second, in the client directory
 cd client
 yarn dev
+```
 
-3.2. Using npm:
+  3.2. Using npm:
 
 ```bash
 # First, in the api directory
@@ -125,7 +126,7 @@ npm run build
 npm run dev
 ```
 
-5. Open your browser and navigate to http://localhost:5173.
+4. Open your browser and navigate to http://localhost:5173.
 
 ## Usage
 **1. User Registration and Authentication:**
