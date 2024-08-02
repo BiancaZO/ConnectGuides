@@ -15,6 +15,7 @@ const Footer = () => (
           <li><Link to="/about" className="text-base text-blueDark hover:text-gray-400">About Us</Link></li>
           <li><Link to="/contact" className="text-base text-blueDark hover:text-gray-400">Contact</Link></li>
           <li><Link to="/privacy" className="text-base text-blueDark hover:text-gray-200">Privacy Policy</Link></li>
+          <li><Link to="/privacyAgreement" className="text-base text-blueDark hover:text-gray-200">Privacy Consent Agreement</Link></li>
         </ul>
       </div>
       <div className="mt-4 md:mt-0 text-sm">
