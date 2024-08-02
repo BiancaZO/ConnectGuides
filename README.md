@@ -80,8 +80,9 @@ yarn install
 
 cd ../api
 yarn install
+```
 
-2.1 Using npm, please run the following in the terminal:
+2.2 Using npm, please run the following in the terminal:
 
 ```bash
 npm install 
