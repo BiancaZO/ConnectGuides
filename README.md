@@ -44,13 +44,16 @@ This project is built using the following technologies:
 - **Authentication**: JWT (JSON Web Tokens)
 - **Styling**: Tailwind CSS
 
-## Installation
+## Prerequisites
 
-### Prerequisites
+Before you start, ensure that you have these technologies installed:
 
+- Vs Code
 - Node.js
 - yarn (preferred) or npm
 - MongoDB instance
+
+## Installation
 
 ### Steps
 
@@ -63,7 +66,7 @@ cd connectguides
 
 2. Install dependencies for both client and server:
  
-If you don't have yarn installed, please run the following:
+2.1 Using yarn, please run the following:
 
 ```bash
 npm install --global yarn
@@ -77,16 +80,48 @@ yarn install
 
 cd ../api
 yarn install
-```
 
-4. Start the development server:
+2.1 Using npm, please run the following in the terminal:
 
 ```bash
-# In the api directory
+npm install 
+```
+
+Then,
+
+```bash
+cd client
+npm install 
+
+cd ../api
+npm install 
+node index.js
+```
+
+3. Start the development server, open TWO terminals:
+3.1. Using yarn:
+
+```bash
+# First, in the api directory
+cd api
 nodemon server
 
-# In the client directory
+# Second, in the client directory
+cd client
 yarn dev
+
+3.2. Using npm:
+
+```bash
+# First, in the api directory
+cd api
+npm install 
+node index.js
+
+# Second, in the client directory
+cd client
+npm run build
+npm run dev
 ```
 
 5. Open your browser and navigate to http://localhost:5173.
