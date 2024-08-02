@@ -4,7 +4,7 @@ const PrivacyConsentAgreement = () => (
       
       <h2 className="text-2xl font-bold text-blue-700 mb-4">Effective Date</h2>
       <p className="text-lg text-gray-800 mb-4">
-        Effective Date: [Date]
+        Effective Date: 07/28/2024
       </p>
   
       <h2 className="text-2xl font-bold text-blue-700 mb-4">Introduction</h2>
