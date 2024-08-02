@@ -79,13 +79,6 @@ cd ../api
 yarn install
 ```
 
-3. Set up environment variables:
-
-Create a .env file in the api directory with the following content:
-```bash
-MONGO_URL=mongodb://localhost:27017/connectguides
-```
-
 4. Start the development server:
 
 ```bash
